@@ -3,12 +3,11 @@ import { Manrope } from "next/font/google";
 import "./globals.css";
 import { ThemeProvider } from "@/components/themeprovider";
 
-const manrope = Manrope({ subsets: ["latin"] });
+const manrope = Manrope({ subsets: ["latin"], variable: "--font-manrope" }); // ✅ safer font variant
 
 export const metadata: Metadata = {
-  title: " SEED",
+  title: "SEED",
   description: "web3 Wallet",
-
   icons: [
     {
       rel: "icon",
@@ -31,8 +30,10 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
-      <body className={`${manrope.className} `}>
+    // ✅ prevents React from complaining if dark/light mismatch on first render
+    <html lang="en" suppressHydrationWarning>
+      <body className={`${manrope.variable} font-sans`}>
+        {/* ✅ ThemeProvider wrapped properly */}
         <ThemeProvider
           attribute="class"
           defaultTheme="system"

@@ -3,6 +3,8 @@
 import * as React from "react";
 import { Moon, Sun } from "lucide-react";
 import { useTheme } from "next-themes";
+import { Switch } from "@/components/ui/switch";
+
 
 
 
@@ -30,6 +32,11 @@ export function ModeToggle() {
       <Sun
         className={`h-5 w-5 ${isDarkMode ? "text-primary/50" : "text-primary"}`}
       />
+
+      <Switch checked={isDarkMode} 
+      
+      
+      onCheckedChange={(checked) => setTheme(checked? "dark":"light")}/>
 
       <Moon
         className={` h-5 w-5 ${

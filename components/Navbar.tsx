@@ -1,4 +1,5 @@
 import { Sprout } from "lucide-react";
+import { ModeToggle } from "./ui/theme-button";
 
 const Navbar = () => {
   return (
@@ -16,6 +17,7 @@ const Navbar = () => {
           </span>
         </div>
       </div>
+      <ModeToggle/>
     </nav>
   );
 };
