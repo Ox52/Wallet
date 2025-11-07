@@ -1,5 +1,7 @@
 import { Sprout } from "lucide-react";
+import React from "react";
 import { ModeToggle } from "./ui/theme-button";
+import { Separator } from "./ui/separator";
 
 const Navbar = () => {
   return (

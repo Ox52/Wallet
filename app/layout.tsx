@@ -1,9 +1,12 @@
+
 import type { Metadata } from "next";
 import { Manrope } from "next/font/google";
 import "./globals.css";
+import { Toaster } from "@/components/ui/sonner";
 import { ThemeProvider } from "@/components/themeprovider";
+import Footer from "@/components/Footer";
 
-const manrope = Manrope({ subsets: ["latin"], variable: "--font-manrope" }); // ✅ safer font variant
+const manrope = Manrope({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
   title: "SEED",
@@ -30,17 +33,18 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    // ✅ prevents React from complaining if dark/light mismatch on first render
-    <html lang="en" suppressHydrationWarning>
-      <body className={`${manrope.variable} font-sans`}>
-        {/* ✅ ThemeProvider wrapped properly */}
+    <html lang="en">
+      <body className={`${manrope.className}`}>
         <ThemeProvider
           attribute="class"
           defaultTheme="system"
           enableSystem
           disableTransitionOnChange
         >
+          <Toaster />
+
           {children}
+          <Footer />
         </ThemeProvider>
       </body>
     </html>
